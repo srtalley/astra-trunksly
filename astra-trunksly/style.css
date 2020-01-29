@@ -1,0 +1,539 @@
+/**
+Theme Name: Trunksly - Astra Child Theme
+Author: Brainstorm Force
+Author URI: http://wpastra.com/about/
+Description: Astra is the fastest, fully customizable & beautiful theme suitable for blogs, personal portfolios and business websites. It is very lightweight (less than 50KB on frontend) and offers unparalleled speed. Built with SEO in mind, Astra comes with schema.org code integrated so search engines will love your site. Astra offers plenty of sidebar options and widget areas giving you a full control for customizations. Furthermore, we have included special features and templates so feel free to choose any of your favorite page builder plugin to create pages flexibly. Some of the other features: # WooCommerce Ready # Responsive # Compatible with major plugins # Translation Ready # Extendible with premium addons # Regularly updated # Designed, Developed, Maintained & Supported by Brainstorm Force. Looking for a perfect base theme? Look no further. Astra is fast, fully customizable and beautiful theme!
+Version: 1.3.7
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: trunksly
+Template: astra
+Date Modified: 2020-01-02
+*/
+/* Selection color */
+::selection {
+  color: #fff !important;
+  background: #1ec9b2 !important;
+}
+.dgwt-wcas-search-wrapp {
+    max-width: 100% !important;
+}
+/* login form */
+.login #itsec-2fa {
+  background: rgba(0,0,0,0);
+  color: #fff;
+}
+.login #itsec-2fa a, #login #itsec-2fa p:not([class]) {
+  color: #fff;
+}
+a.button-social-login {
+  color: #fff !important;
+}
+/* woocommerce buttons */
+.woocommerce a.button, .woocommerce button.button, .woocommerce .woocommerce-message a.button, .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt, .woocommerce input.button, .woocommerce input.button:disabled, .woocommerce input.button:disabled[disabled], .woocommerce input.button:disabled:hover, .woocommerce input.button:disabled[disabled]:hover, .woocommerce #respond input#submit, .woocommerce button.button.alt.disabled, .wc-block-grid__products .wc-block-grid__product .wp-block-button__link, .wc-block-grid__product-onsale,
+.woocommerce a.button,
+.woocommerce a.button.alt,
+button.button.woof_reset_search_form {
+    font-family: "Poppins", Poppins, Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-style: solid;
+    border-width:0;
+    border-radius: 0 !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    color: #1EC9B2;
+    background-color: #4632da;
+    border-color: #4632da;
+    transition: all 0.2s;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 15px;
+}
+.woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover,
+.woocommerce a.button:hover, 
+.woocommerce a.button.alt:hover,
+button.button.woof_reset_search_form:hover {
+    color: #4632da;
+    background-color: #1EC9B2;
+    border-color: #1EC9B2;
+ }
+#add_payment_method .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button,
+.wcppec-checkout-buttons__separator {
+   margin-bottom: 6px;
+ }
+ #wc-stripe-payment-request-wrapper {
+  padding-top: 0 !important;
+  background: #480048;
+  border-radius: 0;
+}
+.woocommerce-notices-wrapper {
+   width: auto !important;
+ }
+ /* proceed to checkout banner on product page */
+.woocommerce-message-inner {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+}
+.woof_container {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+.chosen-container.chosen-container-multi {
+  margin-bottom: 0 !important;
+  width: 100% !important;
+}
+.chosen-container-multi .chosen-choices {
+  border: 1px solid #ddd !important;
+  background-image: none !important;
+  border-radius: 3px;
+}
+.woof_container li.search-field {
+    padding: 7px 0 !important;
+}
+/* Pay with Credit Card button */
+.pay-with-cc-product-page a.single_add_to_cart_button.button {
+  text-align: center;
+  width: 100%;
+  padding: 10px 35px;
+  background-color: #4632da;
+  border-color: #4632da;
+  border-width: 0;
+  color: #1EC9B2;
+  font-size: 15px;
+  line-height: 15px;
+  font-weight: 700;
+}
+.pay-with-cc-product-page a.single_add_to_cart_button.button:hover {
+  border-color: #1EC9B2;
+  background-color: #1EC9B2;
+  color: #4632DA;
+}
+/* Wp user form items */
+.wpuf-form .social-networks.block {
+  display: none;
+}
+.wpuf-form .jssocials-shares {
+  margin: 0;
+}
+ul.wpuf-form li {
+  margin-bottom: 0;
+}
+.logged-in .join-trunksly-not-logged-in,
+.join-trunksly-logged-in {
+  display: none;
+}
+.logged-in .join-trunksly-logged-in {
+  display: block;
+}
+.swal2-container {
+  z-index: 9999999999 !important;
+}
+/* Trunksly plus popup */
+.trunksly-plus-modal {
+  display:none;
+}
+.trunksly-plus-modal.trunksly-plus-modal-show-bg {
+  display: block;
+}
+.trunksly-plus-modal-box {
+  opacity:0;
+  transition: opacity 1s linear;
+  position: fixed;
+  z-index: 99999991;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 800px;
+  min-height: 150px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+  color: #404040;
+}
+.trunksly-plus-close {
+  cursor: pointer;
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  font-size: 24px;
+  z-index: 999;
+  z-index: 99999992;
+}
+.trunksly-plus-icon {
+  display: none;
+  width: 100%;
+  text-align: center;
+  font-size: 96px;
+}
+.trunksly-plus-modal-notice .trunksly-plus-icon-notice,
+.trunksly-plus-modal-success .trunksly-plus-icon-success {
+  display: block;
+}
+.trunksly-plus-modal-content, .trunksly-plus-modal-additional-messages {
+  padding: 10px 20px 20px;
+  font-size: 1.2em;
+}
+.trunksly-plus-modal-content .wpcf7-mail-sent-ok,
+.trunksly-plus-modal-content .wpcf7-validation-errors,
+.trunksly-plus-modal-content .wpcf7-mail-sent-ng {
+  border: none;
+}
+.trunksly-plus-modal-additional-messages {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s linear;
+  padding: 20px 10px 10px;
+  border-top: 1px solid gray;
+}
+.trunksly-plus-modal.trunksly-plus-modal-show-bg .trunksly-plus-modal-box,
+.trunksly-plus-modal.trunksly-plus-modal-show-bg .trunksly-plus-modal-additional-messages.trunksly-plus-modal-show-additional  {
+  display: block;
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+.trunksly-plus-modal-additional-messages h4.trunksly-plus-modal-redirecting {
+  padding-bottom: 0;
+  font-weight: 600;
+}
+.trunksly-plus-modal-background {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999990;
+    background-color: rgba(0, 0, 0, .4);
+}
+.join-trunksly-plus-popup p,
+.join-trunksly-plus-popup label,
+.join-trunksly-plus-popup input,
+.join-trunksly-plus-popup button {
+  font-family: Poppins;
+}
+.join-trunksly-plus-popup p {
+  margin-bottom: 0;
+  line-height: 1.3em;
+}
+.join-trunksly-title h2{
+  color: #0d0051;
+  text-align: left;
+  text-shadow: 0 0 0 rgba( 2,2,2,0.23 );
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+.join-trunksly-plus-popup .wpuf-form.form-label-above {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.join-trunksly-plus-popup .wpuf-form.form-label-above li {
+  flex: 1 1 100%;
+}
+.join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.first_name,
+.join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.last_name {
+  flex: 1 1 50%;
+}
+.join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.first_name,
+.join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.password {
+  padding-right: 10px;
+}
+.join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.last_name,
+.join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.password+li {
+  padding-left: 10px;
+}
+.join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.password,
+.join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.password+li {
+  flex: 1 1 33%;
+}
+.join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.password+li+li {
+  flex: 0 1 200px;
+  padding-left: 20px;
+}
+.join-trunksly-plus-popup .wpuf-form.form-label-above li .pass-strength-result {
+  width: 100%;
+  line-height: 40px;
+  min-width: 160px;
+}
+
+.join-trunksly-plus-popup input {
+  width: 100%;
+}
+.join-trunksly-plus-popup .wpuf-submit-button,
+.join-trunksly-plus-popup .trunksly-plus-membership-upgrade,
+.trunksly-button {
+  font-family: "Poppins", Poppins, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-style: solid;
+  border-width:0;
+  border-radius: 0 !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  color: #1EC9B2;
+  background-color: #4632da;
+  border-color: #4632da;
+  transition: all 0.2s;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 15px;
+}
+.join-trunksly-plus-popup .wpuf-submit-button:hover,
+.join-trunksly-plus-popup .trunksly-plus-membership-upgrade:hover,
+.trunksly-button:hover {
+  color: #4632da;
+  background-color: #1EC9B2;
+  border-color: #1EC9B2;
+}
+.join-trunksly-plus-popup .wpuf-submit+li {
+  display: none;
+}
+/* weForms and WP User Frontend defaults so that the Elementor builder works right */
+.elementor-widget-container ul.wpuf-form li .wpuf-fields .wpuf-name-field-wrap,
+.elementor-widget-container ul.wpuf-form li,
+.elementor-widget-container ul.wpuf-form li .wpuf-fields .wpuf-radio-block, 
+.elementor-widget-container ul.wpuf-form li .wpuf-fields .wpuf-checkbox-block {
+  margin-bottom: 0;
+}
+.elementor-widget-container ul.wpuf-form li .wpuf-fields .wpuf-help {
+  margin: 0;
+}
+.elementor-widget-container ul.wpuf-form { 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.elementor-widget-container ul.wpuf-form li {
+  flex: 1 1 100%;
+}
+.elementor-widget-container ul.wpuf-form .flex-third {
+  flex: 0 1 32%;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-submit input[type=submit] {
+  text-shadow: none;
+  box-shadow: none;
+  border: none;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form input.weforms_submit_btn.button-primary-disabled {
+  color: inherit !important;
+  background: inherit !important;
+  border-color: inherit !important;
+  text-shadow: inherit !important;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=text], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=text], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=password], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=password], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=email], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=email], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=url], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=url], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=number], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=number], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=tel], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input[type=tel], .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields textarea, .elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields textarea {
+  box-shadow: none;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields input,
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-fields textarea {
+  outline: none;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style label.wpuf-checkbox-block:hover {
+  cursor: pointer;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form input[type="checkbox"] {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px;
+  width: 30px !important;
+  margin-left: 10px;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form input[type="checkbox"]:before {
+  content: '';
+  display: inline-block;
+  margin-top: -14px;
+  width: 34px;
+  height: 34px;
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  border-radius: 50px;
+  transition: 0.4s ease-out;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form input[type="checkbox"]:hover:before {
+  background: #1bc9b2;
+  border-color: #1bc9b2;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form input[type="checkbox"]:checked:before {
+  background: #1bc9b2;
+  border-color: #1bc9b2;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form input[type="checkbox"]:disabled {
+  color: #b8b8b8;
+  cursor: auto;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form input[type="checkbox"]:disabled:before {
+  box-shadow: none;
+  background: #ddd;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form input[type="checkbox"]:after {
+  content: '\2714';
+	font-size: 20px;
+  position: absolute;
+  left: 5px;
+  top: -4px;
+  color: rgba(255, 255, 255, 0);
+  width: 30px;
+  height: 30px;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form input[type="checkbox"]:checked:after {
+  color: #fff;
+}
+.elementor-widget-container .wpuf-form-add.wpuf-style ul.wpuf-form input[type="checkbox"]:checked:after {
+  content: '\2714';
+  font-size: 24px;
+  position: absolute;
+  left: 8px;
+  top: -5px;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+}
+/* WP User Frontend Pro registration form styling */
+.wpuf-form-add .wpuf-form li {
+  margin-bottom: 0;
+  padding: 10px 0 0; 
+}
+.wpuf-form-add ul.wpuf-form.form-label-above li .wpuf-label {
+  margin-bottom: 0;
+}
+form.wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-submit input[type=submit] {
+  font-family: "Poppins", Poppins, Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  border-style: solid;
+  border-width: 5px 5px 5px 5px;
+  border-radius: 0px 0px 0px 0px;
+  padding: 14px 035px 14px 35px;
+  color: #ffffff;
+  background: #1ec9b2;
+  border-color: #1ec9b2;
+  transition: all 0.2s;
+  font-weight: bold;
+  text-shadow: none;
+  box-shadow: none;
+}
+form.wpuf-form-add.wpuf-style ul.wpuf-form .wpuf-submit input[type=submit]:hover {
+  color: #1ec9b2;
+  background: #fff;
+  border-color: #1ec9b2;
+}
+/* There's a log in and lost password link that is showing on the popup form that
+shouldn't be. This removes that. */
+.pum-content .wpuf-form-add.wpuf-style > ul.wpuf-form > li:last-of-type {
+  display:none;
+}
+/* Woocommerce Stripe buy now button separator */
+.woocommerce div.product.elementor form.cart:not(.grouped_form):not(.variations_form) {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.elementor-add-to-cart .cart .quantity {
+  float: none;
+  flex: 0 1 130px;
+}
+.elementor-add-to-cart .cart #wc-stripe-payment-request-wrapper {
+  flex: 1 1 60%;
+  margin-bottom: 5px;
+}
+#wc-stripe-payment-request-button-separator {
+  margin: 6px 0 !important;
+  flex: 1 1 100%;
+}
+.elementor-add-to-cart .cart .single_add_to_cart_button.button {
+  flex: 1 1 60%;
+}
+/* Woocommerce Trunksly+ price block */
+.trunksly-regular-price,
+.trunksly-sale-price,
+.trunksly-members-price {
+  display: block;
+}
+.single .trunksly-regular-price del,
+.single .trunksly-sale-price del,
+.single .trunksly-regular-price ins,
+.single .trunksly-sale-price ins,
+.single .trunksly-member-price ins {
+  display: inline !important;
+}
+.trunksly-members-price a {
+  color: #4632DA;
+}
+.trunksly-members-price.woocommerce-Price-amount{
+  padding-top: 20px;
+  display: inline-block;
+}
+.trunksly-members-price .trunksly-plus-price-non-member {
+  font-weight: 600;
+}
+.trunksly-members-price .trunksly-plus-signup-link {
+  display: block;
+  padding-top: 10px;
+}
+/* chatbot */
+#mm-root .mm-chat-bubble {
+  bottom: 70px;
+}
+@media screen and (max-width: 1200px) and (min-width: 992px){
+  /* Fix for WooLentor adding padding that messed up regular Elementor elements */
+  .elementor-section .elementor-container {
+    padding: inherit;
+  }
+}
+@media screen and (max-width: 991px) and (min-width: 768px) {
+  /* Fix for WooLentor adding padding that messed up regular Elementor elements */
+  .elementor-section .elementor-container {
+    padding: inherit;
+  }
+}
+@media screen and (max-width: 768px) {
+ 
+}
+@media screen and (max-width: 767px) {
+  .woocommerce form .form-row {
+    flex-basis: 100% !important;
+  }
+  .elementor-widget-container ul.wpuf-form .flex-third {
+    flex: 1 1 100%;
+  }
+  /* chatbot */
+  #mm-root .mm-chat-bubble {
+    bottom: 100px;
+  }
+  /* Fix for WooLentor adding padding that messed up regular Elementor elements */
+  .elementor-section .elementor-container {
+    padding: inherit;
+  }
+  .trunksly-plus-modal-box {
+    top: 0;
+    transform: none;
+    left: 0;
+    width: 100%;
+    overflow-y: auto;
+    max-height: calc(100vh - 90px);
+  }
+  .join-trunksly-title h2 {
+    font-size: 22px;
+  }
+  .join-trunksly-plus-popup p {
+    font-size: 18px;
+  }
+  .join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.first_name,
+  .join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.last_name,
+  .join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.password,
+  .join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.password+li,
+  .join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.password+li+li {
+    flex: 1 1 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .join-trunksly-plus-popup .wpuf-form.form-label-above .wpuf-el.password+li+li .wpuf-label {
+    display: none;
+  }
+
+}
