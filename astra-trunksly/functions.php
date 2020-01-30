@@ -36,19 +36,6 @@ add_action('elementor/widgets/widgets_registered', function($widgets_manager) {
 });
 
 /**
- * Add the cart to the top of the checkout page
- */
-// add_action( 'woocommerce_before_checkout_form', 'trunksly_show_cart_on_checkout', 10 );
- 
-function trunksly_show_cart_on_checkout() {
- 
-	if ( is_wc_endpoint_url( 'order-received' ) ) return;
-	
-	echo do_shortcode('[woocommerce_cart]');
- 
-} // end function trunksly_show_cart_on_checkout
-
-/**
  * Modify the button shown after adding an item to the cart.
  */ 
 add_filter ( 'wc_add_to_cart_message_html', 'trunksly_wc_add_to_cart_message_filter', 10, 2 );
@@ -142,7 +129,7 @@ function trunksly_change_product_html( $price_html, $product ) {
 } // end trunksly_change_product_html
 
 /**
- * Returns the user account role
+ * Returns true or false if the current user has the role "member"
  */
 function check_if_trunksly_member() {
 	if(is_user_logged_in()) {
@@ -188,12 +175,14 @@ function trunksly_add_membership_button_shortcode($membership_shortcode_attribut
 } //end function trunksly_add_membership_button_shortcode
   
  /**
- * Ajax to add an existing user account to the Trunksly+ membership
+ * Ajax to tag a member with the WP Fusion tag 'trunksly-plus'
  */
 add_action('wp_ajax_trunksly_membership_upgrade', 'trunksly_membership_upgrade_ajax');
 add_action('wp_ajax_nopriv_trunksly_membership_upgrade', 'trunksly_membership_upgrade_ajax');
 function trunksly_membership_upgrade_ajax() {
 
+	// Add the user to the member role if it doesn't already exist 
+	$member_add_status = trunksly_add_member_role($_POST['user_id']);
 	$trunksly_plus_tag_id = wp_fusion()->user->get_tag_id('trunksly-plus');
 	$trunksly_plus_tags = array($trunksly_plus_tag_id);
 	$trunksly_plus_status = wp_fusion()->user->apply_tags($trunksly_plus_tags, $_POST['user_id']);
@@ -205,16 +194,44 @@ function trunksly_membership_upgrade_ajax() {
 	}
     $response = array(
 		'status' => $status,
-		'user_id' =>$_POST['user_id']
+		'user_id' =>$_POST['user_id'],
+		'member_add_status' => $member_add_status
 	);
 
     wp_send_json($response);
     wp_die();
 }
-
+/*
+ * Checks whether the user is logged in and if so shows the membership upgrade button
+ * 
+ */ 
 if(is_user_logged_in()) {
 	add_action('wp_head', 'trunksly_membership_button_script');
 }
+
+/*
+ * Add user to the Member role
+ * 
+ */ 
+function trunksly_add_member_role($user_id) {
+	//get the current user
+	$user =  get_user_by('id', $user_id);
+	$trunksly_role = array('trunksly');
+	if( !array_intersect($allowed_roles, $user->roles ) ) { 
+		// not already a trunksly member
+		$additional_roles = array('editor', 'administrator', 'author');
+		if( array_intersect($allowed_roles, $user->roles ) ) { 
+			// already a specific role we don't want to remove
+			$user->add_role('member');
+			return 'Added role "Member."';
+		} else {
+			$user->set_role('member');
+			return 'Set role "Member."';
+		}
+	} // end if not trunksly member
+	return 'Was already role "Member."';
+} // end function trunksly_add_member_role
+
 /**
  * jQuery that listens for clicks on the upgrade to Trunksly+ button
  */
@@ -258,7 +275,7 @@ function trunksly_membership_button_script() {
 } // end function trunksly_membership_button_script
 
 /*
-*	Add a hidden field to our WooCommerce login form - passing in the refering page URL
+*	Add a hidden field to our WooCommerce login form - passing in the referring page URL
 *	Note: the input (hidden) field doesn't actually get created unless the user was directed
 *	to this page from a single product page
 * 	https://gist.github.com/EvanHerman/492c09fbb584e0c428ae
@@ -284,7 +301,7 @@ function redirect_user_back_to_product() {
 add_action( 'woocommerce_login_form', 'redirect_user_back_to_product' );
 /*
 *	Redirect the user back to the passed in referer page
-*	- Which should be the URL to the last viewed product before logging
+*	- Which should be the URL to the last viewed product before logging in
 */
 function wc_custom_user_redirect( $redirect, $user ) {
 	if( isset( $_POST['redirect-user'] ) ) {
@@ -295,15 +312,9 @@ function wc_custom_user_redirect( $redirect, $user ) {
 add_filter( 'woocommerce_login_redirect', 'wc_custom_user_redirect', 10, 2 );
 
 /*
-*	Remove phone number from the billing fields
+* Builds the custom lightbox to show the Trunksly+ upgrade
+* and is loaded on all pages except the checkout page
 */
-// add_filter( 'woocommerce_checkout_fields', 'dst_woocommerce_checkout_fields' );
-function dst_woocommerce_checkout_fields( $fields ) {
-    // remove the phone field
-	unset($fields['billing']['billing_phone']);
-	unset($fields['shipping']['shipping_phone']);
-    return $fields;
-}
 
 add_action('wp_footer', 'trunksly_plus_lightbox',1);
 
@@ -329,7 +340,8 @@ function trunksly_plus_lightbox(){
 	} // end if
 }
 /*
-*	Add fields for Schema and Google Product feeds to the Inventory tab of the WooCommerce product
+*	Adds gtin and brand fields for Schema and Google Product feeds
+*   to the Inventory tab of the WooCommerce product
 */
 function dst_product_options_sku_add_text_gtin() {
 	$gtin_args = array(
@@ -353,7 +365,8 @@ function dst_product_options_sku_add_text_gtin() {
 add_action( 'woocommerce_product_options_sku', 'dst_product_options_sku_add_text_gtin' );
 
 /**
- * Save the custom product fields
+ * Saves the custom product gtin and brand fields when the product
+ * is saved or updated
  */
 function dst_save_custom_fields( $post_id ) {
 	$product = wc_get_product( $post_id );
@@ -370,7 +383,7 @@ add_action( 'woocommerce_process_product_meta', 'dst_save_custom_fields' );
 
 
 /**
- * Filter to add Brand Name & GTIN for Products.
+ * Filter to add Brand Name & GTIN for Products to the RankMath schema.
  *
  * @param array $entity Snippet Data
  * @return array
